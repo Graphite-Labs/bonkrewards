@@ -1,12 +1,12 @@
 Spl Token Staking Wrapper
 =========================
 
-Wrapper around `spl-token-staking` contract for proper listening to receipts updates and/or fetching it
+This TS Library is built around the Bonkrewards staking contract. This library allows you to fetch information about a user's stake directly from the contract. 
 
-Creating instance
+Creating an instance
 =================
 
-Before using lib you should create instance of `SplTokenStaking`
+Before using the lib you need to create an instance `SplTokenStaking` as shown in the example below.
 
 ```ts
 import { Connection } from "@solana/web3.js";
@@ -23,13 +23,13 @@ const wrapper = new SplTokenStaking(
 );
 ```
 
-Fetching receipts
+Once an instance is created we can now fetch info from our desired PubKey below.
 =================
 
 ```ts
 import { PublicKey } from "@solana/web3.js";
 
-// that's just an example wallet
+// For the sake of this demo, we have imported a random PubKey. You would inject your desired target in this field instead.
 const owner: PublicKey = new PublicKey("64qJxJocstmHMezdxViYU9amJFYvw79Vy3wRR4kfkxAK");
 const receipts = await wrapper.getReceiptsByOwner(owner);
 console.log(receipts);
@@ -62,7 +62,7 @@ console.log(receipts);
 /// ]
 ```
 
-Listening for receipts updates
+Below is an example of how you can receive updates about the user's stake using a listener.
 ==============================
 
 ```ts
@@ -100,6 +100,6 @@ const subscriptionId = wrapper.onReceiptsUpdate(
 ///     }
 /// }
 
-// ... after some time, if you need, you can unsubscribe from it
+// ...Once you're done listening for updates, you can use this code below to unsubscribe.
 await connection.removeProgramAccountChangeListener(subscriptionId);
 ```
