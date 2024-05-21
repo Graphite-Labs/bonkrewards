@@ -1,0 +1,38 @@
+{
+	"include": ["src"],
+	"exclude": ["node_modules"],
+	"compilerOptions": {
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"alwaysStrict": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"strictBindCallApply": true,
+		"strictFunctionTypes": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": false,
+		"declaration": true,
+		"declarationDir": "lib",
+		"outDir": "lib",
+		"removeComments": true,
+		"allowJs": false,
+		"allowSyntheticDefaultImports": true,
+		"target": "esnext"
+	},
+	"typedocOptions": {
+		"entryPoints": ["src/index.ts"],
+		"excludeInternal": true,
+		"out": "docs",
+		"plugin": ["@mxssfd/typedoc-theme"],
+		"theme": "my-theme",
+		"includeVersion": true,
+		"disableSources": true,
+		"hideGenerator": true,
+		"sort": ["kind", "source-order"],
+		"skipErrorChecking": true
+	}
+}
